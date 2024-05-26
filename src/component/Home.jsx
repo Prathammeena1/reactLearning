@@ -1,3 +1,4 @@
+import axios from '../helpers/axios'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,13 +10,22 @@ const Home = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     navigate('/about')
-
   }
+
+  const getUsers = async () => {
+   try{
+    const {data} = await axios.get('/users')
+    console.log(data)
+   }
+   catch(err){
+    console.log(err)
+   }
+  }
+
+
   return (
-    <form onSubmit={submitHandler}>
-      <input type="text" className='border border-zinc-500' />
-      <button className=''>sumbit</button>
-    </form>
+      <button onClick={getUsers}>sumbit</button>
+   
   )
 }
 
