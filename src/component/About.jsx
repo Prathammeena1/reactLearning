@@ -14,6 +14,7 @@ const About = () => {
      console.log(err)
     }
    }
+   
   return (
     <div>
       <button onClick={getUsers}>About</button>
