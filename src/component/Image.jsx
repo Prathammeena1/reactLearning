@@ -33,6 +33,30 @@ const Image = () => {
     }
   }, [id]);
 
+
+  const downloadImage = async () => {
+    try {
+      const imageUrl = image.urls.full
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = image.alt_description;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading image:', error);
+    }
+  };
+
+
+
+
+
   if (loading) {
     return <h1>Loading...</h1>;
   }
@@ -43,8 +67,13 @@ const Image = () => {
 
   return (
     image && (
-      <div className="h-[85vh] overflow-hidden w-fit m-auto">
-        <img src={image.urls.full} className="h-full w-full object-cover" alt={image.alt_description} />
+      <div className="h-[85vh] overflow-hidden w-fit m-auto text-center">
+        <img
+          src={image.urls.full}
+          className="h-[90%] w-full object-cover"
+          alt={image.alt_description}
+        />
+        <button onClick={downloadImage} className="bg-blue-500 hover:bg-blue-500/[.7] transition-all ease-in px-5 py-1 rounded-md text-white mt-4 text-md font-medium">Download Image</button>
       </div>
     )
   );
