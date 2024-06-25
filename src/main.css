@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.imageParent:hover .overlay{
+    opacity:1;
+    transition:all ease-in .2s; 
+}

@@ -8,7 +8,7 @@ const App = () => {
   const [data, setdata] = useContext(datacontext)
   console.log(data)
   return (
-    <div className='px-10'>
+    <div className='px-10 bg-zinc-900 text-zinc-200 h-screen w-full'>
       <Nav/>
       <MainRoutes/>
     </div>
