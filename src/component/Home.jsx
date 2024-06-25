@@ -24,9 +24,11 @@ const Home = () => {
         client_id: config.UNSPLASH_API_CLIENT_ID, // Replace with your Unsplash API access key
       },
     });
-    if(response.data.results)
-    setimages(response.data.results);
-    console.log(response)
+    if(response.data.results.length !== 0){
+      setimages(response.data.results);
+    }else{
+      setimages(null)
+    }
   };
   
   useEffect(() => {
@@ -34,16 +36,19 @@ const Home = () => {
      const category = search.split('=')[1]
      setquery(category)
     }
+    if(search.trim() == ""){
+      setquery("random")
+    }
     console.log(1)
     getImages();
   }, [page,query,search]);
 
-  return images.length > 0 ? (
+  return images ? (images.length > 0 ? (
     <div>
       <div className="text-5xl capitalize mb-2">{query.split('-').join(' ')}</div>
-      <div className="w-full grid grid-cols-5 grid-rows-2 gap-5">
+      <div className="w-full grid grid-cols-2 grid-rows-5 gri md:grid-cols-5 md:grid-rows-2 md:gap-5 gap-3 ">
         {images.map((image) => (
-          <Link to={`/image/${image.id}`} key={image.id} className="imageParent relative h-[35vh] overflow-hidden bg-zinc-800/[.4] cursor-pointer">
+          <Link to={`/image/${image.id}`} key={image.id} className="imageParent relative h-[13vh] overflow-hidden bg-zinc-800/[.4] cursor-pointer">
               <img
                 className="h-full w-full object-cover"
                 src={image.urls.full}
@@ -73,7 +78,7 @@ const Home = () => {
     </div>
   ) : (
     <h1>loading...</h1>
-  );
+  )) : ( <h1>Search Not found</h1> )
 };
 
 export default Home;

@@ -11,7 +11,7 @@ const Nav = () => {
   };
 
   return (
-    <div className="flex w-full items-center justify-between">
+    <div className="flex w-full items-center justify-between gap-2">
       <div className="flex py-5 items-center gap-3">
         <NavLink
           className={(e) =>
@@ -50,31 +50,31 @@ const Nav = () => {
           />
         </form>
         <Link
-          className="capitalize "
+          className="capitalize hidden md:block "
           to="/?category=wallpaper"
         >
           wallpaper
         </Link>
         <Link
-          className="capitalize "
+          className="capitalize hidden md:block "
           to="/?category=nature"
         >
           nature
         </Link>
         <Link
-          className="capitalize "
+          className="capitalize hidden md:block "
           to="/?category=3d-render"
         >
           3d render
         </Link>
         <Link
-          className="capitalize "
+          className="capitalize hidden md:block "
           to="/?category=animal"
         >
           animal
         </Link>
         <Link
-          className="capitalize "
+          className="capitalize hidden md:block "
           to="/?category=spirituality"
         >
           spirituality
