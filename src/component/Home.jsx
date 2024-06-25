@@ -48,7 +48,7 @@ const Home = () => {
       <div className="text-5xl capitalize mb-2">{query.split('-').join(' ')}</div>
       <div className="w-full grid grid-cols-2 grid-rows-5 gri md:grid-cols-5 md:grid-rows-2 md:gap-5 gap-3 ">
         {images.map((image) => (
-          <Link to={`/image/${image.id}`} key={image.id} className="imageParent relative h-[13vh] overflow-hidden bg-zinc-800/[.4] cursor-pointer">
+          <Link to={`/image/${image.id}`} key={image.id} className="imageParent relative h-[13vh] md:h-[35vh] overflow-hidden bg-zinc-800/[.4] cursor-pointer">
               <img
                 className="h-full w-full object-cover"
                 src={image.urls.full}

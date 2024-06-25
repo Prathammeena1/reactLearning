@@ -29,9 +29,9 @@ const Nav = () => {
               ? "font-medium text-lg text-blue-500 transition-all ease-in-out"
               : ""
           }
-          to="/about"
+          to="/contact"
         >
-          About
+          Contact
         </NavLink>
       </div>
 
@@ -40,45 +40,46 @@ const Nav = () => {
       {/* second part nav */}
 
       <div className="flex items-center h-full gap-3">
+        
+        <Link
+          className="capitalize hidden md:block hover:text-blue-400 transition-all ease-in "
+          to="/?category=wallpaper"
+        >
+          wallpaper
+        </Link>
+        <Link
+          className="capitalize hidden md:block hover:text-blue-400 transition-all ease-in "
+          to="/?category=nature"
+        >
+          nature
+        </Link>
+        <Link
+          className="capitalize hidden md:block hover:text-blue-400 transition-all ease-in "
+          to="/?category=3d-render"
+        >
+          3d render
+        </Link>
+        <Link
+          className="capitalize hidden md:block hover:text-blue-400 transition-all ease-in "
+          to="/?category=animal"
+        >
+          animal
+        </Link>
+        <Link
+          className="capitalize hidden md:block hover:text-blue-400 transition-all ease-in "
+          to="/?category=spirituality"
+        >
+          spirituality
+        </Link>
         <form onSubmit={submitHandler}>
           <input
             value={search}
             onChange={(e) => setsearch(e.target.value)}
             type="text"
             placeholder="Search"
-            className="bg-transparent px-2 py-[2px] text-zinc-200 border border-zinc-700 rounded-sm"
+            className="bg-transparent px-2 py-[2px] md:w-[20vw] text-zinc-200 border border-zinc-700 rounded-sm md:ml-[2vw]"
           />
         </form>
-        <Link
-          className="capitalize hidden md:block "
-          to="/?category=wallpaper"
-        >
-          wallpaper
-        </Link>
-        <Link
-          className="capitalize hidden md:block "
-          to="/?category=nature"
-        >
-          nature
-        </Link>
-        <Link
-          className="capitalize hidden md:block "
-          to="/?category=3d-render"
-        >
-          3d render
-        </Link>
-        <Link
-          className="capitalize hidden md:block "
-          to="/?category=animal"
-        >
-          animal
-        </Link>
-        <Link
-          className="capitalize hidden md:block "
-          to="/?category=spirituality"
-        >
-          spirituality
-        </Link>
       </div>
     </div>
   );
