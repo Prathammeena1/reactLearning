@@ -12,13 +12,9 @@ const Home = () => {
   const {query,setquery,images,setimages} = useContext(datacontext)
 
   const {search} = useLocation()
- if(search.trim() !== ""){
-  const category = search.split('=')[1]
-  setquery(category)
- }
-
-
-
+  
+  
+  
   const getImages = async () => {
     const response = await axios.get("https://api.unsplash.com/search/photos", {
       params: {
@@ -28,12 +24,19 @@ const Home = () => {
         client_id: config.UNSPLASH_API_CLIENT_ID, // Replace with your Unsplash API access key
       },
     });
+    if(response.data.results)
     setimages(response.data.results);
+    console.log(response)
   };
-
+  
   useEffect(() => {
+    if(search.trim() !== ""){
+     const category = search.split('=')[1]
+     setquery(category)
+    }
+    console.log(1)
     getImages();
-  }, [page,query]);
+  }, [page,query,search]);
 
   return images.length > 0 ? (
     <div>

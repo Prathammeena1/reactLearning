@@ -1,7 +1,15 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Nav = () => {
+  const [search, setsearch] = useState("");
+  const navigate = useNavigate()
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    navigate(`/?category=${search}`)
+  };
+
   return (
     <div className="flex w-full items-center justify-between">
       <div className="flex py-5 items-center gap-3">
@@ -27,36 +35,46 @@ const Nav = () => {
         </NavLink>
       </div>
 
-{/* second part nav */}
+      {/* inp */}
 
+      {/* second part nav */}
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center h-full gap-3">
+        <form onSubmit={submitHandler}>
+          <input
+            value={search}
+            onChange={(e) => setsearch(e.target.value)}
+            type="text"
+            placeholder="Search"
+            className="bg-transparent px-2 py-[2px] text-zinc-200 border border-zinc-700 rounded-sm"
+          />
+        </form>
         <Link
-          // className="font-medium "
+          className="capitalize "
           to="/?category=wallpaper"
         >
           wallpaper
         </Link>
         <Link
-          // className="font-medium "
+          className="capitalize "
           to="/?category=nature"
         >
           nature
         </Link>
         <Link
-          // className="font-medium "
+          className="capitalize "
           to="/?category=3d-render"
         >
           3d render
         </Link>
         <Link
-          // className="font-medium "
+          className="capitalize "
           to="/?category=animal"
         >
           animal
         </Link>
         <Link
-          // className="font-medium "
+          className="capitalize "
           to="/?category=spirituality"
         >
           spirituality
