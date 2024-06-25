@@ -4,10 +4,11 @@ export const datacontext = createContext(null)
 
 
 const DataContext = ({children}) => {
-    const [query, setquery] = useState("nature");
+    const [query, setquery] = useState("random");
+    const [images, setimages] = useState([]);
 
     return (
-        <datacontext.Provider value={{query, setquery}}>
+        <datacontext.Provider value={{query, setquery,images,setimages}}>
             {children}
         </datacontext.Provider>
     )
