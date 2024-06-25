@@ -4,10 +4,10 @@ export const datacontext = createContext(null)
 
 
 const DataContext = ({children}) => {
-    const [data, setdata] = useState('some data context')
+    const [query, setquery] = useState("nature");
 
     return (
-        <datacontext.Provider value={[data, setdata]}>
+        <datacontext.Provider value={{query, setquery}}>
             {children}
         </datacontext.Provider>
     )
