@@ -13,6 +13,7 @@ const Home = () => {
 
   const {search} = useLocation()
   
+  const [query2,setquery2] = useState()
   
   
   const getImages = async () => {
@@ -39,13 +40,27 @@ const Home = () => {
     if(search.trim() == ""){
       setquery("random")
     }
-    console.log(1)
+
+    if(query.includes('-')){
+      setquery2(query.split('-').join(' '))
+    }
+    else if(query.includes('%20')){
+      setquery2(query.split('%20').join(' '))
+    }
+    else{
+      setquery2(query)
+    }
+
     getImages();
   }, [page,query,search]);
 
+
+  
+
+
   return images ? (images.length > 0 ? (
     <div>
-      <div className="text-5xl capitalize mb-2">{query.split('-').join(' ')}</div>
+      <div className="text-5xl capitalize mb-2">{query2}</div>
       <div className="w-full grid grid-cols-2 grid-rows-5 gri md:grid-cols-5 md:grid-rows-2 md:gap-5 gap-3 ">
         {images.map((image) => (
           <Link to={`/image/${image.id}`} key={image.id} className="imageParent relative h-[13vh] md:h-[35vh] overflow-hidden bg-zinc-800/[.4] cursor-pointer">
